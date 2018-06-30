@@ -65,28 +65,20 @@ void loop() {
   tone(BUZZER2, mapValue2);
   delay(10);
   noTone(BUZZER2);
-//
-//  if (sensorValue2 > LOW_FREQ)
-//    digitalWrite(greenLED2, HIGH);
-//  else
-//    digitalWrite(greenLED2, LOW);
-//    
-//  if (sensorValue2 > MED_FREQ)
-//    digitalWrite(yellowLED2, HIGH);
-//  else
-//    digitalWrite(yellowLED2, LOW);  
-//  
-//  if (sensorValue2 > HIGH_FREQ)
-//    digitalWrite(redLED2, HIGH);
-//  else
-//    digitalWrite(redLED2, LOW);
+
+  if (sensorValue2 > LOW_FREQ)
+    digitalWrite(greenLED2, HIGH);
+  else
+    digitalWrite(greenLED2, LOW);
+    
+  if (sensorValue2 > MED_FREQ)
+    digitalWrite(yellowLED2, HIGH);
+  else
+    digitalWrite(yellowLED2, LOW);  
   
-
-
-
-
-
-
-
+  if (sensorValue2 > HIGH_FREQ)
+    digitalWrite(redLED2, HIGH);
+  else
+    digitalWrite(redLED2, LOW);
   
 }
