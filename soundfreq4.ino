@@ -13,9 +13,9 @@ int yellowLED2 = 12;
 int redLED2 = 13;
 
 
-int LOW_FREQ = 11;
-int MED_FREQ = 12;
-int HIGH_FREQ = 13;
+int LOW_FREQ = 200;
+int MED_FREQ = 450;
+int HIGH_FREQ = 800;
 
 
 
@@ -57,10 +57,6 @@ void loop() {
   else
     digitalWrite(redLED1, LOW);
   
-  
-  
-  
-  
   //Speaker 2
   sensorValue2 = analogRead(A1);
   Serial.println(sensorValue2);
@@ -69,8 +65,22 @@ void loop() {
   tone(BUZZER2, mapValue2);
   delay(10);
   noTone(BUZZER2);
-
-
+//
+//  if (sensorValue2 > LOW_FREQ)
+//    digitalWrite(greenLED2, HIGH);
+//  else
+//    digitalWrite(greenLED2, LOW);
+//    
+//  if (sensorValue2 > MED_FREQ)
+//    digitalWrite(yellowLED2, HIGH);
+//  else
+//    digitalWrite(yellowLED2, LOW);  
+//  
+//  if (sensorValue2 > HIGH_FREQ)
+//    digitalWrite(redLED2, HIGH);
+//  else
+//    digitalWrite(redLED2, LOW);
+  
 
 
 
