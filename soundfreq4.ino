@@ -37,11 +37,20 @@ void loop() {
   noTone(BUZZER1);
   
   
-  if mapValue1 > 200
+  if (mapValue1 > 200)
+    digitalWrite(greenLED1, HIGH);
+  else
+    digitalWrite(greenLED1, LOW);
     
+  if (mapValue1 > 500)
+    digitalWrite(yellowLED1, HIGH);
+  else
+    digitalWrite(yellowLED1, LOW);  
   
-  
-  
+    if (mapValue1 > 800)
+    digitalWrite(redLED1, HIGH);
+  else
+    digitalWrite(redLED1, LOW);
   
   
   
