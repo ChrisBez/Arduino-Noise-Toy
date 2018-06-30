@@ -42,12 +42,12 @@ void loop() {
   else
     digitalWrite(greenLED1, LOW);
     
-  if (mapValue1 > 500)
+  if (mapValue1 > 5000)
     digitalWrite(yellowLED1, HIGH);
   else
     digitalWrite(yellowLED1, LOW);  
   
-    if (mapValue1 > 800)
+    if (mapValue1 > 8000)
     digitalWrite(redLED1, HIGH);
   else
     digitalWrite(redLED1, LOW);
