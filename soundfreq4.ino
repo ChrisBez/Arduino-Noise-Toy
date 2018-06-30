@@ -5,13 +5,18 @@ int greenLED1 = 8;
 int yellowLED1 = 9;
 int redLED1 = 10;
 
-
 int BUZZER2 = 7;
 int sensorValue2 = 0;
 int mapValue2 = 0;
 int greenLED2 = 11;
 int yellowLED2 = 12;
 int redLED2 = 13;
+
+
+int LOW_FREQ = 11;
+int MED_FREQ = 12;
+int HIGH_FREQ = 13;
+
 
 
 void setup() {
@@ -37,17 +42,17 @@ void loop() {
   noTone(BUZZER1);
   
   
-  if (mapValue1 > 200)
+  if (sensorValue1 > LOW_FREQ)
     digitalWrite(greenLED1, HIGH);
   else
     digitalWrite(greenLED1, LOW);
     
-  if (mapValue1 > 5000)
+  if (sensorValue1 > MED_FREQ)
     digitalWrite(yellowLED1, HIGH);
   else
     digitalWrite(yellowLED1, LOW);  
   
-    if (mapValue1 > 8000)
+  if (sensorValue1 > HIGH_FREQ)
     digitalWrite(redLED1, HIGH);
   else
     digitalWrite(redLED1, LOW);
