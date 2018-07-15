@@ -17,7 +17,7 @@ const int RED_LED_2 = 13;
 const int POT_MIN_READING = 0;
 const int POT_MAX_READING = 1023;
 
-//Buzzer tone limits - Passive buzzers and active buzzers
+//Buzzer tone limits: Passive buzzers and active buzzers
 const int ACTIVE_MIN_TONE = 100;
 const int ACTIVE_MAX_TONE = 10000;
 
@@ -29,8 +29,17 @@ const int LOW_FREQ = 200;
 const int MED_FREQ = 450;
 const int HIGH_FREQ = 800;
 
+
+const int LED_COUNT = 6;
+const int LED_PROPS = 3;
+
+
+const int LED_PIN = 0;
+const int LED_POT_PIN = 1;
+const int LED_FREQ = 2;
+
 //Matrix used in LED Status loop
-const int LED_MATRIX[6][3] = {
+const int LED_MATRIX[LED_COUNT][LED_PROPS] = {
  
   {GREEN_LED_1,   POT_PIN_1,  LOW_FREQ  },
  
@@ -62,29 +71,17 @@ void setup() {
 void loop() {
   //Speaker 1
   buzz(POT_PIN_1, BUZZER1, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
-  
-  writeLedStatus(POT_PIN_1, GREEN_LED_1, LOW_FREQ);
-
-  writeLedStatus(POT_PIN_1, YELLOW_LED_1, MED_FREQ);
-
-  writeLedStatus(POT_PIN_1, RED_LED_1, HIGH_FREQ);
-  
+    
   //Speaker 2
   buzz(POT_PIN_2, BUZZER2, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
 
-  writeLedStatus(POT_PIN_2, GREEN_LED_2, LOW_FREQ);
-
-  writeLedStatus(POT_PIN_2, YELLOW_LED_2, MED_FREQ);
-
-  writeLedStatus(POT_PIN_2, RED_LED_2, HIGH_FREQ);
-  
-}
-
-void writeLedStatus(int potPin, int ledPin, int freqThreshold){
-  if (analogRead(potPin) > freqThreshold)
-    digitalWrite(ledPin, HIGH);
-  else
-    digitalWrite(ledPin, LOW);
+  //Test each LED for activation and light them up
+  for (int i = 0; i < LED_COUNT; i++){
+    if (analogRead(LED_MATRIX[i][LED_POT_PIN]) > LED_MATRIX[i][LED_FREQ])
+      digitalWrite(LED_MATRIX[i][LED_PIN], HIGH);
+    else
+      digitalWrite(LED_MATRIX[i][LED_PIN], LOW);
+  }
 }
 
 void buzz(int potPin, int buzzerPin,int minTone, int maxTone){
