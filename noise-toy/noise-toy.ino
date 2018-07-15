@@ -1,20 +1,20 @@
+
+//set 1 pins
 const int BUZZER1 = 4;
-int sensorValue1 = 0;
-int mapValue1 = 0;
 const int greenLED1 = 8;
 const int yellowLED1 = 9;
 const int redLED1 = 10;
 
+
+//set 2 pins
 const int BUZZER2 = 7;
-int sensorValue2 = 0;
-int mapValue2 = 0;
 const int greenLED2 = 11;
 const int yellowLED2 = 12;
 const int redLED2 = 13;
 
 //Potentiometer values get read between 0 and 1023
-const int POT_MIN_READING = 0
-const int POT_MAX_READING = 1023
+const int POT_MIN_READING = 0;
+const int POT_MAX_READING = 1023;
 
 
 //Values to trigger LEDs
@@ -23,6 +23,12 @@ const int MED_FREQ = 450;
 const int HIGH_FREQ = 800;
 
 
+//variables
+int sensorValue1 = 0;
+int mapValue1 = 0;
+
+int sensorValue2 = 0;
+int mapValue2 = 0;
 
 void setup() {
   Serial.begin(9600);
