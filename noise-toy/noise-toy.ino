@@ -12,7 +12,12 @@ int greenLED2 = 11;
 int yellowLED2 = 12;
 int redLED2 = 13;
 
+//Potentiometer values get read between 0 and 1023
+int POT_MIN_READING = 0
+int POT_MAX_READING = 1023
 
+
+//Values to trigger LEDs
 int LOW_FREQ = 200;
 int MED_FREQ = 450;
 int HIGH_FREQ = 800;
@@ -35,7 +40,7 @@ void loop() {
   //Speaker 1
   sensorValue1 = analogRead(A0);
   Serial.println(sensorValue1);
-  mapValue1 = map(sensorValue1, 0, 1023, 100, 10000);
+  mapValue1 = map(sensorValue1, POT_MIN_READING, POT_MAX_READING, 100, 10000);
   Serial.println(mapValue1);
   tone(BUZZER1, mapValue1);
   delay(10);
@@ -50,7 +55,7 @@ void loop() {
   //Speaker 2
   sensorValue2 = analogRead(A1);
   Serial.println(sensorValue2);
-  mapValue2 = map(sensorValue2, 0, 1023, 100, 3000);
+  mapValue2 = map(sensorValue2, POT_MIN_READING, POT_MAX_READING, 100, 3000);
   Serial.println(mapValue2);
   tone(BUZZER2, mapValue2);
   delay(10);
@@ -70,4 +75,6 @@ void writeLedStatus(int sensor, int led, int freq){
     else
       digitalWrite(led, LOW);
 }
+
+
 
