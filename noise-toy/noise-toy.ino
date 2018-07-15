@@ -89,7 +89,7 @@ void writeLedStatus(int sensor, int led, int freq){
       digitalWrite(led, LOW);
 }
 
-void mapAndTone(int potValue, int buzzerPin,int minTone, int maxTone){
+void buzz(int potValue, int buzzerPin,int minTone, int maxTone){
   Serial.println(potValue);
   tone(buzzerPin, map(potValue, POT_MIN_READING, POT_MAX_READING, minTone, maxTone));
   delay(10);
