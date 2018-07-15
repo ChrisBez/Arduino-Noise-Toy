@@ -29,14 +29,6 @@ const int LOW_FREQ = 200;
 const int MED_FREQ = 450;
 const int HIGH_FREQ = 800;
 
-
-//variables
-int sensorValue1 = 0;
-int mapValue1 = 0;
-
-int sensorValue2 = 0;
-int mapValue2 = 0;
-
 void setup() {
   Serial.begin(9600);
   pinMode(BUZZER1,OUTPUT);
@@ -53,28 +45,28 @@ void loop() {
   //Speaker 1
   buzz(POT_PIN_1, BUZZER1, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
   
-  writeLedStatus(analogRead(POT_PIN_1), GREEN_LED_1, LOW_FREQ);
+  writeLedStatus(POT_PIN_1, GREEN_LED_1, LOW_FREQ);
 
-  writeLedStatus(analogRead(POT_PIN_1), YELLOW_LED_1, MED_FREQ);
+  writeLedStatus(POT_PIN_1, YELLOW_LED_1, MED_FREQ);
 
-  writeLedStatus(analogRead(POT_PIN_1), RED_LED_1, HIGH_FREQ);
+  writeLedStatus(POT_PIN_1, RED_LED_1, HIGH_FREQ);
   
   //Speaker 2
   buzz(POT_PIN_2, BUZZER2, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
 
-  writeLedStatus(analogRead(POT_PIN_2), GREEN_LED_2, LOW_FREQ);
+  writeLedStatus(POT_PIN_2, GREEN_LED_2, LOW_FREQ);
 
-  writeLedStatus(analogRead(POT_PIN_2), YELLOW_LED_2, MED_FREQ);
+  writeLedStatus(POT_PIN_2, YELLOW_LED_2, MED_FREQ);
 
-  writeLedStatus(analogRead(POT_PIN_2), RED_LED_2, HIGH_FREQ);
+  writeLedStatus(POT_PIN_2, RED_LED_2, HIGH_FREQ);
   
 }
 
-void writeLedStatus(int sensor, int led, int freq){
-    if (sensor > freq)
-      digitalWrite(led, HIGH);
-    else
-      digitalWrite(led, LOW);
+void writeLedStatus(int potPin, int ledPin, int freqThreshold){
+  if (analogRead(potPin) > freqThreshold)
+    digitalWrite(ledPin, HIGH);
+  else
+    digitalWrite(ledPin, LOW);
 }
 
 void buzz(int potPin, int buzzerPin,int minTone, int maxTone){
