@@ -41,21 +41,11 @@ void loop() {
   delay(10);
   noTone(BUZZER1);
   
-  
-  if (sensorValue1 > LOW_FREQ)
-    digitalWrite(greenLED1, HIGH);
-  else
-    digitalWrite(greenLED1, LOW);
-    
-  if (sensorValue1 > MED_FREQ)
-    digitalWrite(yellowLED1, HIGH);
-  else
-    digitalWrite(yellowLED1, LOW);  
-  
-  if (sensorValue1 > HIGH_FREQ)
-    digitalWrite(redLED1, HIGH);
-  else
-    digitalWrite(redLED1, LOW);
+  writeLedStatus(sensorValue1, greenLED1, LOW_FREQ);
+
+  writeLedStatus(sensorValue1, yellowLED1, MED_FREQ);
+
+  writeLedStatus(sensorValue1, redLED1, HIGH_FREQ);
   
   //Speaker 2
   sensorValue2 = analogRead(A1);
@@ -66,27 +56,18 @@ void loop() {
   delay(10);
   noTone(BUZZER2);
 
-  if (sensorValue2 > LOW_FREQ)
-    digitalWrite(greenLED2, HIGH);
-  else
-    digitalWrite(greenLED2, LOW);
-    
-  if (sensorValue2 > MED_FREQ)
-    digitalWrite(yellowLED2, HIGH);
-  else
-    digitalWrite(yellowLED2, LOW);  
-  
-  if (sensorValue2 > HIGH_FREQ)
-    digitalWrite(redLED2, HIGH);
-  else
-    digitalWrite(redLED2, LOW);
+  writeLedStatus(sensorValue2, greenLED2, LOW_FREQ);
+
+  writeLedStatus(sensorValue2, yellowLED2, MED_FREQ);
+
+  writeLedStatus(sensorValue2, redLED2, HIGH_FREQ);
   
 }
 
 void writeLedStatus(int sensor, int led, int freq){
     if (sensor > freq)
-    digitalWrite(led, HIGH);
-  else
-    digitalWrite(led, LOW);
+      digitalWrite(led, HIGH);
+    else
+      digitalWrite(led, LOW);
 }
 
