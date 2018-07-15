@@ -52,12 +52,7 @@ void setup() {
 void loop() {
   //Speaker 1
   sensorValue1 = analogRead(POT_PIN_1);
-  Serial.println(sensorValue1);
-  mapValue1 = map(sensorValue1, POT_MIN_READING, POT_MAX_READING, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
-  Serial.println(mapValue1);
-  tone(BUZZER1, mapValue1);
-  delay(10);
-  noTone(BUZZER1);
+  buzz(sensorValue1, BUZZER1, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
   
   writeLedStatus(sensorValue1, GREEN_LED_1, LOW_FREQ);
 
@@ -67,12 +62,7 @@ void loop() {
   
   //Speaker 2
   sensorValue2 = analogRead(POT_PIN_2);
-  Serial.println(sensorValue2);
-  mapValue2 = map(sensorValue2, POT_MIN_READING, POT_MAX_READING, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
-  Serial.println(mapValue2);
-  tone(BUZZER2, mapValue2);
-  delay(10);
-  noTone(BUZZER2);
+  buzz(sensorValue2, BUZZER2, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
 
   writeLedStatus(sensorValue2, GREEN_LED_2, LOW_FREQ);
 
