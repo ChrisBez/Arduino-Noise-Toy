@@ -82,3 +82,11 @@ void loop() {
     digitalWrite(redLED2, LOW);
   
 }
+
+void writeLedStatus(int sensor, int led, int freq){
+    if (sensor > freq)
+    digitalWrite(led, HIGH);
+  else
+    digitalWrite(led, LOW);
+}
+
