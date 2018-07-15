@@ -1,26 +1,26 @@
-int BUZZER1 = 4;
+const int BUZZER1 = 4;
 int sensorValue1 = 0;
 int mapValue1 = 0;
-int greenLED1 = 8;
-int yellowLED1 = 9;
-int redLED1 = 10;
+const int greenLED1 = 8;
+const int yellowLED1 = 9;
+const int redLED1 = 10;
 
-int BUZZER2 = 7;
+const int BUZZER2 = 7;
 int sensorValue2 = 0;
 int mapValue2 = 0;
-int greenLED2 = 11;
-int yellowLED2 = 12;
-int redLED2 = 13;
+const int greenLED2 = 11;
+const int yellowLED2 = 12;
+const int redLED2 = 13;
 
 //Potentiometer values get read between 0 and 1023
-int POT_MIN_READING = 0
-int POT_MAX_READING = 1023
+const int POT_MIN_READING = 0
+const int POT_MAX_READING = 1023
 
 
 //Values to trigger LEDs
-int LOW_FREQ = 200;
-int MED_FREQ = 450;
-int HIGH_FREQ = 800;
+const int LOW_FREQ = 200;
+const int MED_FREQ = 450;
+const int HIGH_FREQ = 800;
 
 
 
