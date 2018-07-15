@@ -29,6 +29,24 @@ const int LOW_FREQ = 200;
 const int MED_FREQ = 450;
 const int HIGH_FREQ = 800;
 
+//Matrix used in LED Status loop
+const int LED_MATRIX[6][3] = {
+ 
+  {GREEN_LED_1,   POT_PIN_1,  LOW_FREQ  },
+ 
+  {YELLOW_LED_1,  POT_PIN_1,  MED_FREQ  },
+ 
+  {RED_LED_1,     POT_PIN_1,  HIGH_FREQ },
+
+  {GREEN_LED_2,   POT_PIN_2,  LOW_FREQ  },
+ 
+  {YELLOW_LED_2,  POT_PIN_2,  MED_FREQ  },
+ 
+  {RED_LED_2,     POT_PIN_2,  HIGH_FREQ }
+ 
+};
+
+
 void setup() {
   Serial.begin(9600);
   pinMode(BUZZER1,OUTPUT);
