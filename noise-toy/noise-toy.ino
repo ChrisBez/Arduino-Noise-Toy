@@ -6,7 +6,6 @@ const int GREEN_LED_1 = 8;
 const int YELLOW_LED_1 = 9;
 const int RED_LED_1 = 10;
 
-
 //buzzer 2 pins
 const int POT_PIN_2 = 1;
 const int BUZZER2 = 7;
@@ -25,7 +24,6 @@ const int ACTIVE_MAX_TONE = 10000;
 const int PASSIVE_MIN_TONE = 100;
 const int PASSIVE_MAX_TONE = 3000;
 
-
 //Values to trigger LEDs
 const int LOW_FREQ = 200;
 const int MED_FREQ = 450;
@@ -43,12 +41,12 @@ void setup() {
   Serial.begin(9600);
   pinMode(BUZZER1,OUTPUT);
   pinMode(BUZZER2,OUTPUT);
-  pinMode(greenLED1,OUTPUT);
-  pinMode(yellowLED1,OUTPUT);
-  pinMode(redLED1,OUTPUT);
-  pinMode(greenLED2,OUTPUT);
-  pinMode(yellowLED2,OUTPUT);
-  pinMode(redLED2,OUTPUT);
+  pinMode(GREEN_LED_1,OUTPUT);
+  pinMode(YELLOW_LED_1,OUTPUT);
+  pinMode(RED_LED_1,OUTPUT);
+  pinMode(GREEN_LED_2,OUTPUT);
+  pinMode(YELLOW_LED_2,OUTPUT);
+  pinMode(RED_LED_2,OUTPUT);
 }
 
 void loop() {
@@ -91,5 +89,10 @@ void writeLedStatus(int sensor, int led, int freq){
       digitalWrite(led, LOW);
 }
 
-
+void mapAndTone(int potValue, int buzzerPin,int minTone, int maxTone){
+  Serial.println(potValue);
+  tone(buzzerPin, map(potValue, POT_MIN_READING, POT_MAX_READING, minTone, maxTone));
+  delay(10);
+  noTone(buzzerPin);
+}
 
