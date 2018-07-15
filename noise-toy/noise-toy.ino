@@ -16,6 +16,13 @@ const int redLED2 = 13;
 const int POT_MIN_READING = 0;
 const int POT_MAX_READING = 1023;
 
+//Buzzer tone limits - Passive buzzers and active buzzers
+const int ACTIVE_MIN_TONE = 100;
+const int ACTIVE_MAX_TONE = 10000;
+
+const int PASSIVE_MIN_TONE = 100;
+const int PASSIVE_MAX_TONE = 3000;
+
 
 //Values to trigger LEDs
 const int LOW_FREQ = 200;
@@ -46,7 +53,7 @@ void loop() {
   //Speaker 1
   sensorValue1 = analogRead(A0);
   Serial.println(sensorValue1);
-  mapValue1 = map(sensorValue1, POT_MIN_READING, POT_MAX_READING, 100, 10000);
+  mapValue1 = map(sensorValue1, POT_MIN_READING, POT_MAX_READING, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
   Serial.println(mapValue1);
   tone(BUZZER1, mapValue1);
   delay(10);
@@ -61,7 +68,7 @@ void loop() {
   //Speaker 2
   sensorValue2 = analogRead(A1);
   Serial.println(sensorValue2);
-  mapValue2 = map(sensorValue2, POT_MIN_READING, POT_MAX_READING, 100, 3000);
+  mapValue2 = map(sensorValue2, POT_MIN_READING, POT_MAX_READING, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
   Serial.println(mapValue2);
   tone(BUZZER2, mapValue2);
   delay(10);
