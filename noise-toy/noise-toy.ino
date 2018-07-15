@@ -51,24 +51,22 @@ void setup() {
 
 void loop() {
   //Speaker 1
-  sensorValue1 = analogRead(POT_PIN_1);
-  buzz(sensorValue1, BUZZER1, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
+  buzz(POT_PIN_1, BUZZER1, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
   
-  writeLedStatus(sensorValue1, GREEN_LED_1, LOW_FREQ);
+  writeLedStatus(analogRead(POT_PIN_1), GREEN_LED_1, LOW_FREQ);
 
-  writeLedStatus(sensorValue1, YELLOW_LED_1, MED_FREQ);
+  writeLedStatus(analogRead(POT_PIN_1), YELLOW_LED_1, MED_FREQ);
 
-  writeLedStatus(sensorValue1, RED_LED_1, HIGH_FREQ);
+  writeLedStatus(analogRead(POT_PIN_1), RED_LED_1, HIGH_FREQ);
   
   //Speaker 2
-  sensorValue2 = analogRead(POT_PIN_2);
-  buzz(sensorValue2, BUZZER2, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
+  buzz(POT_PIN_2, BUZZER2, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
 
-  writeLedStatus(sensorValue2, GREEN_LED_2, LOW_FREQ);
+  writeLedStatus(analogRead(POT_PIN_2), GREEN_LED_2, LOW_FREQ);
 
-  writeLedStatus(sensorValue2, YELLOW_LED_2, MED_FREQ);
+  writeLedStatus(analogRead(POT_PIN_2), YELLOW_LED_2, MED_FREQ);
 
-  writeLedStatus(sensorValue2, RED_LED_2, HIGH_FREQ);
+  writeLedStatus(analogRead(POT_PIN_2), RED_LED_2, HIGH_FREQ);
   
 }
 
@@ -79,9 +77,8 @@ void writeLedStatus(int sensor, int led, int freq){
       digitalWrite(led, LOW);
 }
 
-void buzz(int potValue, int buzzerPin,int minTone, int maxTone){
-  Serial.println(potValue);
-  tone(buzzerPin, map(potValue, POT_MIN_READING, POT_MAX_READING, minTone, maxTone));
+void buzz(int potPin, int buzzerPin,int minTone, int maxTone){
+  tone(buzzerPin, map(analogRead(potPin), POT_MIN_READING, POT_MAX_READING, minTone, maxTone));
   delay(10);
   noTone(buzzerPin);
 }
