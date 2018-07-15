@@ -1,16 +1,18 @@
 
-//set 1 pins
+//buzzer 1 pins
+const int POT_PIN_1 = 0;
 const int BUZZER1 = 4;
-const int greenLED1 = 8;
-const int yellowLED1 = 9;
-const int redLED1 = 10;
+const int GREEN_LED_1 = 8;
+const int YELLOW_LED_1 = 9;
+const int RED_LED_1 = 10;
 
 
-//set 2 pins
+//buzzer 2 pins
+const int POT_PIN_2 = 1;
 const int BUZZER2 = 7;
-const int greenLED2 = 11;
-const int yellowLED2 = 12;
-const int redLED2 = 13;
+const int GREEN_LED_2 = 11;
+const int YELLOW_LED_2 = 12;
+const int RED_LED_2 = 13;
 
 //Potentiometer values get read between 0 and 1023
 const int POT_MIN_READING = 0;
@@ -51,7 +53,7 @@ void setup() {
 
 void loop() {
   //Speaker 1
-  sensorValue1 = analogRead(A0);
+  sensorValue1 = analogRead(POT_PIN_1);
   Serial.println(sensorValue1);
   mapValue1 = map(sensorValue1, POT_MIN_READING, POT_MAX_READING, ACTIVE_MIN_TONE, ACTIVE_MAX_TONE);
   Serial.println(mapValue1);
@@ -59,14 +61,14 @@ void loop() {
   delay(10);
   noTone(BUZZER1);
   
-  writeLedStatus(sensorValue1, greenLED1, LOW_FREQ);
+  writeLedStatus(sensorValue1, GREEN_LED_1, LOW_FREQ);
 
-  writeLedStatus(sensorValue1, yellowLED1, MED_FREQ);
+  writeLedStatus(sensorValue1, YELLOW_LED_1, MED_FREQ);
 
-  writeLedStatus(sensorValue1, redLED1, HIGH_FREQ);
+  writeLedStatus(sensorValue1, RED_LED_1, HIGH_FREQ);
   
   //Speaker 2
-  sensorValue2 = analogRead(A1);
+  sensorValue2 = analogRead(POT_PIN_2);
   Serial.println(sensorValue2);
   mapValue2 = map(sensorValue2, POT_MIN_READING, POT_MAX_READING, PASSIVE_MIN_TONE, PASSIVE_MAX_TONE);
   Serial.println(mapValue2);
@@ -74,11 +76,11 @@ void loop() {
   delay(10);
   noTone(BUZZER2);
 
-  writeLedStatus(sensorValue2, greenLED2, LOW_FREQ);
+  writeLedStatus(sensorValue2, GREEN_LED_2, LOW_FREQ);
 
-  writeLedStatus(sensorValue2, yellowLED2, MED_FREQ);
+  writeLedStatus(sensorValue2, YELLOW_LED_2, MED_FREQ);
 
-  writeLedStatus(sensorValue2, redLED2, HIGH_FREQ);
+  writeLedStatus(sensorValue2, RED_LED_2, HIGH_FREQ);
   
 }
 
